@@ -1,0 +1,12 @@
+# exclude mac os finder system folder
+.DS_Store
+
+# exclude unnecessary folders
+datasets/
+projectEnv/
+
+# exclude llm generated files
+*_gpt.*
+
+# exclude zip files
+*.zip
