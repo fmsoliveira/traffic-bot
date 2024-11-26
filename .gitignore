@@ -10,3 +10,6 @@ projectEnv/
 
 # exclude zip files
 *.zip
+
+# exclude jupyter notebook
+*.ipynb
