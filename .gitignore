@@ -13,3 +13,6 @@ projectEnv/
 
 # exclude jupyter notebook
 *.ipynb
+
+# exclude pycache
+__pycache__
