@@ -26,11 +26,9 @@ def train_model_supervised_learning():
     df['month'] = pd.to_datetime(df['timestamp_converted']).dt.month
     
     
-    # get train set - 60% of the data
-    X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.6,random_state=42)
+    X = df.drop(columns=['accident_risk','favorite_color', 'ice_cream_preference', 'vehicle_type', 'timestamp_converted', 'timestamp'])
 
-    # split the other 40% of the data evenly into validation and test sets
-    X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5,random_state=42)
+    y = df['accident_risk']
  
 
     # get train set - 40% of the data
