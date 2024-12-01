@@ -42,6 +42,6 @@ def api_predict_random_forest():
     print("DATA ON REQUEST: ", data)
 
     return jsonify({
-        'accident_risk': "api under development"
+        'accident_risk': "api under development",
         'message': "api under development"
     })
