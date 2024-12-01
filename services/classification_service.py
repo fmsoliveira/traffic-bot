@@ -1,7 +1,7 @@
 import joblib
 import numpy as np
 
-class ClassificationService():
+class ClassificationService:
 
     def __init__(self):
         self.model = joblib.load('AI_training_files/Logistic Regression_classification.pkl')

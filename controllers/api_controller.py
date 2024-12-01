@@ -33,3 +33,15 @@ def api_predict():
         'accident_risk': accident_risk,
         'message': 'Prediction successful!'
     })
+
+@api_bp.route('/accident-predict-random-forest', methods=['POST'])
+def api_predict_random_forest():
+    
+    data = request.form
+
+    print("DATA ON REQUEST: ", data)
+
+    return jsonify({
+        'accident_risk': "api under development"
+        'message': "api under development"
+    })
