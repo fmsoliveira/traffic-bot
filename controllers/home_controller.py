@@ -13,6 +13,10 @@ def home():
     return render_template('index.html', map_html=map_html)
     #return render_template('index.html')
 
-@home_bp.route('/accidents-predict')
+@home_bp.route('/accident-predict')
 def accidents_predict():    
     return render_template('predict.html')
+
+@home_bp.route('/accident-predict-random-forest')
+def accident_predict_random_forest():
+    return render_template('predict-random-forest.html')

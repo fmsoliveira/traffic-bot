@@ -1,4 +1,4 @@
-body {
+html {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
   text-align: center;
@@ -11,7 +11,7 @@ h1 {
 }
 
 form {
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -24,12 +24,21 @@ label {
   font-weight: bold;
 }
 input {
-  width: 100%;
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+select {
+  width: calc(100% - 16px);
   padding: 8px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 button {
   padding: 10px 15px;
   background-color: #007bff;
@@ -120,4 +129,10 @@ button:hover {
   background-color: #eaf8e6; /* Light green */
   color: #2d572c; /* Dark green */
   font-weight: bold;
+}
+
+#map-container {
+  flex-grow: 1; /* Takes the remaining space */
+  padding: 10px;
+  text-align: center;
 }

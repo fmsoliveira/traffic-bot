@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flask Web App</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Prever a probabilidade de Acidentes</h1>
+
+    <form
+      id="ensemble-form"
+      action="/accident-predict-random-forest"
+      method="POST"
+    >
+      <!-- Latitude and Longitude -->
+      <label for="latitude">Latitude (valid values):</label>
+      <input
+        type="number"
+        id="latitude"
+        name="latitude"
+        step="any"
+        min="-90"
+        max="90"
+        required
+      />
+
+      <label for="longitude">Longitude (valid values):</label>
+      <input
+        type="number"
+        id="longitude"
+        name="longitude"
+        step="any"
+        min="-180"
+        max="180"
+        required
+      />
+
+      <button type="button" onclick="getLocation()">Obter coordenadas</button>
+
+      <!-- Air Quality Index -->
+      <label for="air_quality_index"
+        >Índice de qualidade do ar (0 a 100):</label
+      >
+      <input
+        type="number"
+        id="air_quality_index"
+        name="air_quality_index"
+        step="1"
+        min="0"
+        max="100"
+        required
+      />
+
+      <!-- Temperature -->
+      <label for="temperature">Temperatura (°C entre -40 a 60):</label>
+      <input
+        type="number"
+        id="temperature"
+        name="temperature"
+        step="0.1"
+        min="-40"
+        max="60"
+        required
+      />
+
+      <!-- Humidity -->
+      <label for="humidity">Humidade (%):</label>
+      <input
+        type="number"
+        id="humidity"
+        name="humidity"
+        step="0.1"
+        min="0"
+        max="100"
+        required
+      />
+
+      <!-- Traffic Density -->
+      <label for="traffic_density">Densidade de tráfego (0 a 2000):</label>
+      <input
+        type="number"
+        id="traffic_density"
+        name="traffic_density"
+        step="0.1"
+        min="0"
+        max="2000"
+        required
+      />
+
+      <!-- Average Speed -->
+      <label for="average_speed">Velocidade média (km/h):</label>
+      <input
+        type="number"
+        id="average_speed"
+        name="average_speed"
+        step="0.1"
+        min="0"
+        max="200"
+        required
+      />
+
+      <!-- Population Density -->
+      <label for="population_density">Densidade populacional (0 a 5000):</label>
+      <input
+        type="number"
+        id="population_density"
+        name="population_density"
+        min="0"
+        max="5000"
+        required
+      />
+
+      <!-- Building Density -->
+      <label for="building_density">Densidade urbana (0.0 a 200.0):</label>
+      <input
+        type="number"
+        id="building_density"
+        name="building_density"
+        step="0.1"
+        min="0"
+        max="200"
+        required
+      />
+
+      <!-- Congestion Level -->
+      <label for="congestion_level"
+        >Nível de congestionamento (0.0 a 1.0):</label
+      >
+      <input
+        type="number"
+        id="congestion_level"
+        name="congestion_level"
+        step="0.01"
+        min="0"
+        max="1"
+        required
+      />
+
+      <!-- Vehicle Type -->
+      <label for="vehicle_type_encoded">Tipo de veículo:</label>
+      <select name="vehicle_type_encoded" id="vehicle_type_encoded" required>
+        <option value="car">Automóvel</option>
+        <option value="motorcycle">Mota</option>
+        <option value="truck">Camião</option>
+        <option value="bus">Autocarro</option>
+      </select>
+
+      <!-- Date and Time -->
+      <label for="datetime">Data e Hora:</label>
+      <input type="datetime-local" id="datetime" name="datetime" required />
+
+      <button type="submit">Prever o risco de acidente</button>
+    </form>
+
+    <!-- Result Card -->
+    <div id="result-card">
+      <p id="result-message">Prediction result will appear here.</p>
+    </div>
+
+    <a href="/">
+      <button class="homepage-button">Homepage</button>
+    </a>
+
+    <script src="{{ url_for('static', filename='js/predict-ensemble.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/get-location.js') }}"></script>
+  </body>
+</html>

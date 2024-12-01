@@ -1,5 +1,5 @@
 document
-  .querySelector("#classification-form")
+  .querySelector("#ensemble-form")
   .addEventListener("submit", async function (event) {
     event.preventDefault(); // Prevent page reload
 
@@ -7,7 +7,7 @@ document
     const formData = new FormData(this);
 
     // Send data to the API
-    const response = await fetch("/api/accident-predict", {
+    const response = await fetch("/api/accident-predict-random-forest", {
       method: "POST",
       body: formData,
     });

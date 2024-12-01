@@ -1,6 +1,8 @@
+from datetime import datetime 
 from flask import Blueprint, jsonify, request
 
 from services.classification_service import ClassificationService
+from services.ensemble_service import EnsembleService
 
 # Create a Blueprint for the api route
 api_bp = Blueprint('api', __name__, url_prefix='/api')
@@ -39,9 +41,29 @@ def api_predict_random_forest():
     
     data = request.form
 
-    print("DATA ON REQUEST: ", data)
+    latitude = float(data.get('latitude', 0))
+    longitude = float(data.get('longitude', 0))
+    air_quality_index = float(data.get('air_quality_index', 0))
+    temperature = float(data.get('temperature', 0))
+    humidity = float(data.get('humidity', 0))
+    traffic_density = float(data.get('traffic_density', 0))
+    average_speed = float(data.get('average_speed', 0))
+    population_density = float(data.get('population_density', 0))
+    building_density = float(data.get('building_density', 0))
+    congestion_level = float(data.get('congestion_level', 0))
+    vehicle_type_encoded = data.get('vehicle_type_encoded', 0)
+    date_and_time = (data.get('datetime', 0))
+
+    parsed_date_time = datetime.strptime(date_and_time, "%Y-%m-%dT%H:%M")
+
+    parsed_hour = parsed_date_time.hour
+    parsed_day = parsed_date_time.day
+    parsed_year = parsed_date_time.year
+
+    trained_model = EnsembleService()
+    accident_risk = trained_model.predict(latitude, longitude, air_quality_index, temperature, humidity, traffic_density, average_speed, population_density, building_density, congestion_level, vehicle_type_encoded, parsed_hour, parsed_day, parsed_year)
 
     return jsonify({
-        'accident_risk': "api under development",
-        'message': "api under development"
+        'accident_risk': accident_risk,
+        'message': 'Prediction successful!'
     })
