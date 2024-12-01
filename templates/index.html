@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flask Web App</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Olá, sou o TrOt - The Traffic Bot</h1>
+    <p>
+      Por agora só consigo responder com previsões sobre o risco de acidente!
+    </p>
+    <p>Mas com o tempo vou aprender uma série de coisas novas 😜</p>
+
+    <h4>O que já consigo fazer?</h4>
+    <div class="feature-card">
+      <a href="/accidents-predict">Prever o risco de acidentes</a>
+    </div>
+
+    <!-- Embed the map HTML here -->
+    <div id="map-container">
+      <div id="map">{{ map_html|safe }}</div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

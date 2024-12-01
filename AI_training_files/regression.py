@@ -9,7 +9,7 @@ from sklearn.metrics import mean_absolute_error, r2_score
 from sklearn.linear_model import Lasso
 from sklearn.linear_model import Ridge
 
-def train_model_supervised_learning():
+def train_model_regression():
     # read data file
     df = pd.read_csv('./geospatial_data.csv')
 
